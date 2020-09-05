@@ -64,12 +64,7 @@ input[type=text], input[type=password] {
   }
   
 
-  .login {
-    background-color: tomato;
-    color: white;
-    border: none; 
-    border-radius: unset;
-  }
+ 
   
   .header {
     text-align: center;
@@ -83,6 +78,7 @@ input[type=text], input[type=password] {
 
   .card-container {
     margin-top: 15px;
+
   }
   
   span.psw {
@@ -146,10 +142,7 @@ input[type=text], input[type=password] {
     border-radius: unset;
   }
   
-  .error {
-    font-size: 12px;
-    color: red;
-  }
+
 
   @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)} 

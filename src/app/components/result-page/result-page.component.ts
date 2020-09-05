@@ -32,7 +32,7 @@ export class ResultPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInfo = this.datashareService.userInfo;
-    if (this.userInfo.userName === 'admin')
+    if (this.userInfo.username === 'admin')
       this.enableEditDelete = true;
     this.refreshBooks();
   }
@@ -45,7 +45,7 @@ export class ResultPageComponent implements OnInit {
 
   public back() {
     this.datashareService.userInfo = this.userInfo;
-    this.location.back();
+    this.router.navigate(['../']);
   }
 
   addNew() {

@@ -10,14 +10,14 @@ import { map } from 'rxjs/operators';
 })
 export class BookService {
 
-  private booksURL = "http://localhost:3000/bookList";
+  private endPoint = environment.apiEndpoint;
 
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  }
+  };
 
   constructor(
     private http: HttpClient
@@ -27,7 +27,7 @@ export class BookService {
 
   getAllBooks(): Observable<Book[]> {
 
-    return this.http.get(this.booksURL)
+    return this.http.get(this.endPoint)
       .pipe(
         map((res: any) => {
           if (res != null) {
@@ -41,7 +41,7 @@ export class BookService {
   }
 
   addBook(book: Book): Observable<Book[]> {
-    return this.http.post(this.booksURL, book, this.httpOptions)
+    return this.http.post(this.endPoint, book, this.httpOptions)
       .pipe(
         map((res: any) => {
           if (res != null) {
@@ -50,11 +50,11 @@ export class BookService {
             return null;
           }
         })
-      )
+      );
   }
 
   updateBook(book): Observable<Book> {
-    return this.http.put<Book>(`${this.booksURL}/${book.id}`,
+    return this.http.put<Book>(`${this.endPoint}/${book.id}`,
       book)
       .pipe(
         map((res: any) => {
@@ -68,7 +68,7 @@ export class BookService {
   }
 
   deleteBook(id) {
-    return this.http.delete(`${this.booksURL}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.endPoint}/${id}`, this.httpOptions)
       .pipe(
         map((res: any) => {
           if (res != null) {

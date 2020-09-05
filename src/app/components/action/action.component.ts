@@ -21,7 +21,6 @@ export class ActionComponent implements OnInit {
   constructor(
     private location: Location,
     private datashareService: DatashareService,
-    private bookService: BookService,
     private store: Store<fromBook.AppState>
   ) { }
 

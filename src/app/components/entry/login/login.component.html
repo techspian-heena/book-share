@@ -1,0 +1,19 @@
+
+     <div class="card">
+        <div class="container">  
+          <div class="alert" *ngIf="isInValidUser">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            Invalid username or password.Please try again!
+          </div> 
+          <b><h3> User Login </h3></b> 
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required [(ngModel)]="username">
+            <div class="error" *ngIf="alertMsg">Please Enter Username</div>  
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="password">  
+            <button type="submit" (click)="login()">Login</button>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <button type="button" class="cancelbtn" (click)="cancel()"> Cancel</button>  
+        </div> 
+      </div>  
+ 

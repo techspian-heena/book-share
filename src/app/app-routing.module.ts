@@ -17,7 +17,10 @@ const routes: Routes = [
   {
     path: 'action',
     component: ActionComponent
-  }
+  },
+  { path: 'entry',
+   loadChildren:  () => import('./components/entry/entry.module').then(x => x.EntryModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+<div class="header">
+    <h2> <i class="fa fa-book-open"></i> Book Share</h2>
+    <div class="header-right">
+        <div class="dropdown">
+            <i class='fas fa-fill-drip'></i>
+            <div class="dropdown-content">
+                <input type="radio" id="light" value="light" name="theme" (change)="changeValue($event.target.value)">
+                <label for="light">Light</label><br>
+                <input type="radio" id="dark" value="dark" name="theme" (change)="changeValue($event.target.value)">
+                <label for="dark">Dark</label>
+            </div>
+        </div>
+    </div>
+</div>

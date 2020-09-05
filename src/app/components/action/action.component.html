@@ -1,0 +1,24 @@
+<h2 *ngIf="!id">Share Your Book</h2>
+<h2 *ngIf="id">Edit Book</h2>
+<div class="card">
+  <div class="container">
+    <div class="book-details">
+        <label>Book Name</label>
+        <input placeholder="Enter Book Name" type="text"  [(ngModel)]="title" name = "name">
+    </div>
+    <div class="book-details">
+        <label>Book Category</label>
+        <input placeholder="Enter Book Category" type="text" [(ngModel)]="category" name="category">
+    </div>
+    <div class="book-details">
+        <label>Book Description</label>
+        <textarea placeholder="Enter Your Book Description" [(ngModel)]="description" style="height:200px" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="page-footer border-top">
+    <button class="cancel" (click)="cancel()">Cancel</button>
+    <button *ngIf="!id" type="submit" class="save" (click)="onSave()">Save</button>
+    <button *ngIf="id" type="submit" class="save" (click)="edit()">Edit</button>
+  </div>
+</div>

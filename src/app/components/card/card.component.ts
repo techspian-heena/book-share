@@ -11,6 +11,9 @@ export class CardComponent implements OnInit {
 
   @Input() book: Book;
 
+  @Input()
+  storybookColor: 'gray' | 'blue' | 'violet';
+
   categories: any;
 
 
@@ -30,6 +33,10 @@ export class CardComponent implements OnInit {
       };
       console.log(this.categories);
     }
+  }
+
+  public get classes(): string[] {
+    return [`${this.storybookColor}`];
   }
 
   setCategories(book: Book) {

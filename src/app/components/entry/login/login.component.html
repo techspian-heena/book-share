@@ -6,14 +6,23 @@
             Invalid username or password.Please try again!
           </div> 
           <b><h3> User Login </h3></b> 
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
             <label>Username : </label>   
-            <input type="text" placeholder="Enter Username" name="username" required [(ngModel)]="username">
-            <div class="error" *ngIf="alertMsg">Please Enter Username</div>  
+            <input type="text" placeholder="Enter Username" name="username" required formControlName="username">
+            <div *ngIf="isLoggedin && formControl.username.errors">
+              <div class="error" *ngIf="formControl.username.errors.required">Username is required</div>
+            </div> 
+
             <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="password">  
-            <button type="submit" (click)="login()">Login</button>   
+            <input type="password" placeholder="Enter Password" name="password" required formControlName="password"> 
+            <div *ngIf="isLoggedin && formControl.password.errors">
+              <div class="error" *ngIf="formControl.password.errors.required">Password is required</div>
+            </div>
+
+            <button type="submit">Login</button>   
             <input type="checkbox" checked="checked"> Remember me   
             <button type="button" class="cancelbtn" (click)="cancel()"> Cancel</button>  
+            </form>
         </div> 
       </div>  
  

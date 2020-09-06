@@ -35,6 +35,38 @@
       "category": "Science",
       "description": " The Sequel to The Handmaid's Tale",
       "id": 6
+    },
+    {
+      "title": "test",
+      "Category": "sfdfd",
+      "Description": "About to  half rode",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "zaq1ZAQ!",
+      "firstName": "Heena",
+      "lastName": "Verma",
+      "email": "heena@techspian.com"
+    },
+    {
+      "id": 1,
+      "username": "heena",
+      "password": "xsw2!",
+      "firstName": "Heena",
+      "lastName": "Verma",
+      "email": "heena@techspian.com"
+    },
+    {
+      "username": "djd",
+      "password": "oooooo",
+      "firstname": "kfkkk",
+      "lastname": "kfkkk",
+      "email": "kkkk",
+      "id": 2
     }
   ]
 }

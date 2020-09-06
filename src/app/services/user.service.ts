@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  private endPoint = environment.apiEndPointForUser;
+  private endPoint = environment.apiEndpoint;
 
   httpOptions = {
     headers: new HttpHeaders({

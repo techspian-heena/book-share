@@ -4,10 +4,7 @@ import { ActionComponent } from './action.component';
 
 describe('ActionComponent', () => {
 
-  let fixture: ActionComponent;
-
-  
- /* let component: ActionComponent;
+  let component: ActionComponent;
   let fixture: ComponentFixture<ActionComponent>;
 
   beforeEach(async(() => {
@@ -25,5 +22,5 @@ describe('ActionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
 });

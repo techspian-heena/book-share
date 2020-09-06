@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private datashareService: DatashareService,
     private store: Store<fromBook.AppState>
   ) { }
 

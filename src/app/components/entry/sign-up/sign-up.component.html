@@ -3,7 +3,7 @@
     <b><h3> User Registration Form </h3></b>
     <hr>  
 
- <form [formGroup]="signupForm" (ngSubmit)="register()">
+ <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)">
   <label> Username </label>   
   <input type="text" name="username" placeholder= "Username" size="15" required formControlName="username" />  
   <div *ngIf="isRegisterd && formControl.username.errors">

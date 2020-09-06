@@ -16,10 +16,15 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  describe('Test: HomeComponent', () => {
+		it ('should be initialized', () => {
+		//	expect(fixture).toBeTruthy();
+	//		fixture.detectChanges();
+			const compiled = fixture.debugElement.nativeElement;
+			const button = compiled.querySelector('button');
+			expect(button.textContent).toContain('Login');
+		});
+	});
 });

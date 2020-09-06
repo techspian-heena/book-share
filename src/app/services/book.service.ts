@@ -27,7 +27,7 @@ export class BookService {
 
   getAllBooks(): Observable<Book[]> {
 
-    return this.http.get(this.endPoint)
+    return this.http.get(`${this.endPoint}/books`)
       .pipe(
         map((res: any) => {
           if (res != null) {
@@ -41,7 +41,7 @@ export class BookService {
   }
 
   addBook(book: Book): Observable<Book[]> {
-    return this.http.post(this.endPoint, book, this.httpOptions)
+    return this.http.post(`${this.endPoint}/books`, book, this.httpOptions)
       .pipe(
         map((res: any) => {
           if (res != null) {
@@ -54,7 +54,7 @@ export class BookService {
   }
 
   updateBook(book): Observable<Book> {
-    return this.http.put<Book>(`${this.endPoint}/${book.id}`,
+    return this.http.put<Book>(`${this.endPoint}/books/${book.id}`,
       book)
       .pipe(
         map((res: any) => {
@@ -68,7 +68,7 @@ export class BookService {
   }
 
   deleteBook(id) {
-    return this.http.delete(`${this.endPoint}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.endPoint}/books/${id}`, this.httpOptions)
       .pipe(
         map((res: any) => {
           if (res != null) {

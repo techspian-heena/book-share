@@ -36,22 +36,23 @@ export class SignUpComponent implements OnInit {
     return this.signupForm.controls; 
   }
 
-  register() {
+  register(formdata: any) {
 
     this.isRegisterd = true;
     if (this.signupForm.invalid) {
       return;
     }
 
-    this.userService.addUser(this.signupForm.value)
+    this.userService.addUser(formdata.value)
     .subscribe((res: User[]) => {
       if (res) {
-        this.router.navigateByUrl('login');
+        this.router.navigate(['./entry/login']);
       }
     })
   }
 
   cancel() {
-   this.location.back();
+  // this.location.back();
+  this.router.navigate(['../']);
   }
 }

@@ -107,7 +107,7 @@ To simplify initial dev flow I have used json-server to simulate REST APIs.
 1.	Build the app using latest Angular CLI - 10.0.8
 2.	Use own markup and css for styling, use svg for images.
 3.	Use NgRx for state management.
-4.	Write unit tests for most of the components using Jest ->  Statements - 63.1%, Branches - 21.15%, Functions -                                                              43.04%,  Lines - 60%
+4.	Write unit tests for most of the components using Jest ->  Statements - 68.75%, Branches - 31.58%, Functions -                                                              48.61%,  Lines - 65.81%
 5.	Checked that application is accessible.
 6.	Write Storybook stories for card & footer component.
 7.	Two themes for the app – light and dark which we can change from header

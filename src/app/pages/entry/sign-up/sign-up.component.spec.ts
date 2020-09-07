@@ -12,14 +12,16 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('SignUpComponent', () => {
 
-  let component: SignUpComponent;
-  let fixture: ComponentFixture<SignUpComponent>;
   let formGroupDirective: Partial<FormGroupDirective>;
   const formBuilder: FormBuilder = new FormBuilder();
+  let fixture: SignUpComponent;
+  let userServiceMock: any;
+  let formBuilderMock: FormBuilder;
+  let routerMock: any;
   const router = {
     navigate: jasmine.createSpy('navigate')
   };
-  let userMock: any;
+  const userMock: any = null;
 
   beforeEach(async(() => {
     formGroupDirective = {
@@ -32,8 +34,7 @@ describe('SignUpComponent', () => {
         RouterTestingModule,
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-      //  DynamicTestModule
+        ReactiveFormsModule
       ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
@@ -53,21 +54,6 @@ describe('SignUpComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SignUpComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-/*  let component: SignUpComponent;
-  let fixture: SignUpComponent;
-  let userServiceMock: any;
-  let formBuilderMock: FormBuilder;
-  let routerMock: any;
 
   beforeEach(() => {
     userServiceMock = {
@@ -124,7 +110,7 @@ describe('SignUpComponent', () => {
     expect(userServiceMock.addUser).not.toHaveBeenCalled();
   });
 
-  it('should call register', () => {
+ /* it('should call register', () => {
     const formData = {
       username: 'admin',
       password: 'zaq1ZAQ!',

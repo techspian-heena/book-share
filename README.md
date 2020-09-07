@@ -37,17 +37,25 @@ Footer
 
 ## App Components
 
-HomeComponent
-HeaderComponent
-FooterComponent
-CardComponent
+HomeComponent   - Displays list of books in Home Page.
+
+HeaderComponent - It is header of application. 
+                  Contains application logo with title, Login & SignUp button and a dropdown to change the    theme of app in light  or dark.
+
+FooterComponent - It is footer of application
+
+CardComponent   - Displays the Book title, category name & image of category in a card.
 
 ## App Pages
 
-LoginComponent
-SignUpComponent
-ResultPageComponent
-ActionComponent
+LoginComponent      - It contains login form, when you logged in then render to result page.
+
+SignUpComponent     - It contains registration form.
+
+ResultPageComponent - Displays Book details. Contains ADD NEW & LOGOUT button. 
+                      If user loggenIn as admin(username: admin, password: zaq1ZAQ!) user then he/she can see UPDATE & DELETE button otherwise they can only add new Books. 
+                      
+ActionComponent     - It is page from where user can add new book or update existing book depends on action.
 
 ## Reusable Component
 
@@ -60,15 +68,51 @@ EntryModule
 
 ## Services
 
-BookService
-DatashareService
-ThemeService
-UserService
+BookService       -  Service to perform CRUD operation on books API created by json-server.
+
+DatashareService  -  Service to store the data.
+
+ThemeService      -  Service to change the theme as dark or light
+
+UserService       -  Service to get the users who has created account & to add new user.
 
 ## Interfaces
 
-Book
-User
+Book - Book model that includes id, title, category & description.
+
+User - User model that includes username, password, firstname, lastname & email.
+
+## State Management
+
+Ngrx Store
+
+--> book.actions.ts - It has enum of BookActionTypes
+
+--> BookEffect - call bookservice from BookEffect
+
+--> book.reducer.ts - It has interface AppState, BookState
 
 
+
+## Book Sharing Application Allow
+1.	public listing of books and their associated data
+2.	option for user login and registration flow
+3.	for logged in users CRUD flow for books and their info : only admin can delete or edit book.
+                                                             (username: admin, password: zaq1ZAQ!)
+
+To simplify initial dev flow I have used json-server to simulate REST APIs.
+
+## As Expected:
+
+1.	Build the app using latest Angular CLI - 10.0.8
+2.	Use own markup and css for styling, use svg for images.
+3.	Use NgRx for state management.
+4.	Write unit tests for most of the components using Jest ->  Statements - 63.1%, Branches - 21.15%, Functions -                                                              43.04%,  Lines - 60%
+5.	Checked that application is accessible.
+6.	Write Storybook stories for card & footer component.
+7.	Two themes for the app – light and dark which we can change from header
+8.	Published code to GitHub with proper commit messages.
+
+
+ 
 

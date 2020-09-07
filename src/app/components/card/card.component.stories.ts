@@ -4,7 +4,9 @@ import { storiesOf } from '@storybook/angular';
 storiesOf('Card', module)
   .add('empty', () => ({
     component: CardComponent,
-    props: {}
+    props: {
+      storybookColor: 'tomato'
+    }
   }))
 
   .add('with title', () => ({

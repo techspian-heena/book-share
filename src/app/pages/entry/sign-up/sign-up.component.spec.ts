@@ -2,11 +2,68 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignUpComponent } from './sign-up.component';
 import { UserService } from 'src/app/services/user.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroupDirective, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideMockStore } from '@ngrx/store/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('SignUpComponent', () => {
+
   let component: SignUpComponent;
+  let fixture: ComponentFixture<SignUpComponent>;
+  let formGroupDirective: Partial<FormGroupDirective>;
+  const formBuilder: FormBuilder = new FormBuilder();
+  const router = {
+    navigate: jasmine.createSpy('navigate')
+  };
+  let userMock: any;
+
+  beforeEach(async(() => {
+    formGroupDirective = {
+      form: new FormGroup({})
+    };
+    TestBed.configureTestingModule({
+      declarations: [SignUpComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+      //  DynamicTestModule
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        provideMockStore({
+          initialState: {
+            data: {
+
+            }
+          },
+        }),
+        { provide: UserService, useValue: userMock },
+        { provide: FormGroupDirective, useValue: formGroupDirective },
+        { provide: FormBuilder, useValue: formBuilder }
+
+      ]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SignUpComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+/*  let component: SignUpComponent;
   let fixture: SignUpComponent;
   let userServiceMock: any;
   let formBuilderMock: FormBuilder;
@@ -14,16 +71,16 @@ describe('SignUpComponent', () => {
 
   beforeEach(() => {
     userServiceMock = {
-			addUser: jest.fn()
-		};
+      addUser: jest.fn()
+    };
     routerMock = jest.fn();
     formBuilderMock = new FormBuilder();
-		fixture = new SignUpComponent(
+    fixture = new SignUpComponent(
       userServiceMock,
       formBuilderMock,
       routerMock,
-		);
-		fixture.ngOnInit();
+    );
+    fixture.ngOnInit();
   });
 
   it('should initialize signupForm', () => {
@@ -74,9 +131,9 @@ describe('SignUpComponent', () => {
       firstname: 'Heena',
       lastname: 'Verma',
       email: 'heena@techspian.com'
-    };   
-    fixture.register(formData)
+    };
+    fixture.register(formData);
     expect(userServiceMock.addUser).toHaveBeenCalled();
-  });
+  });*/
 
 });

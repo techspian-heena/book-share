@@ -1,24 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/layout/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { ResultPageComponent } from './components/result-page/result-page.component';
-import { ActionComponent } from './components/action/action.component';
+import { ResultPageComponent } from './pages/result-page/result-page.component';
+import { ActionComponent } from './pages/action/action.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { bookReducer } from './components/state/book.reducer';
+import { bookReducer } from './store/book.reducer';
 import {
   StoreRouterConnectingModule,
-  routerReducer,
-  RouterStateSerializer
-} from "@ngrx/router-store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { EffectsModule } from "@ngrx/effects";
-import { BookEffect } from "./components/state/book.effect";
+  routerReducer
+} from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffect } from './store/book.effect';
 import { CardComponent } from './components/card/card.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { CardComponent } from './components/card/card.component';
     HeaderComponent,
     ResultPageComponent,
     ActionComponent,
-    CardComponent
+    CardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,13 +36,13 @@ import { CardComponent } from './components/card/card.component';
     StoreModule.forRoot({
       router: routerReducer
     }),
-    StoreRouterConnectingModule.forRoot({ stateKey: "router" }),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature("books", bookReducer),
+    StoreModule.forFeature('books', bookReducer),
     EffectsModule.forFeature([BookEffect])
   ],
   providers: [],

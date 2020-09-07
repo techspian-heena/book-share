@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
-import { Book } from '../interfaces/book';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +9,18 @@ export class DatashareService {
 
   private dataShareSubject = new BehaviorSubject(null);
   public userInfo: User = null;
-  historyBooks: Book[] = [];
-  horrorBooks: Book[] = [];
-  cookBooks: Book[] = [];
-  comicBooks: Book[] = [];
-  scienceBooks: Book[] = [];
-  otherBooks: Book[] = []; 
 
   constructor() { }
 
-  public unsubscribe() {
+  public unsubscribe(): void {
     this.dataShareSubject = new BehaviorSubject(null);
   }
 
-  public setData(data) {
+  public setData(data): void {
    this.dataShareSubject.next(data);
   }
 
-  public getData() {
+  public getData(): Observable<any> {
     return this.dataShareSubject.asObservable();
   }
 }

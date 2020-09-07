@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { ResultPageComponent } from './components/result-page/result-page.component';
-import { ActionComponent } from './components/action/action.component';
+import { ResultPageComponent } from './pages/result-page/result-page.component';
+import { ActionComponent } from './pages/action/action.component';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ActionComponent
   },
   { path: 'entry',
-   loadChildren:  () => import('./components/entry/entry.module').then(x => x.EntryModule)
+   loadChildren:  () => import('./pages/entry/entry.module').then(x => x.EntryModule)
   },
 ];
 

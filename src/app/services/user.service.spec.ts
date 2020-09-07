@@ -1,5 +1,4 @@
 import { TestBed, inject, getTestBed } from '@angular/core/testing';
-
 import { UserService } from './user.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
@@ -13,19 +12,19 @@ describe('UserService', () => {
     TestBed.configureTestingModule({
       providers: [UserService],
       imports: [
-          HttpClientTestingModule
+        HttpClientTestingModule
       ]
     });
     injector = getTestBed();
     service = TestBed.inject(UserService);
-    httpMock = injector.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   beforeEach(
-    inject([UserService, HttpTestingController], (_service, _httpMock) => {
-      service = _service;
-      httpMock = _httpMock;
-  }));
+    inject([UserService, HttpTestingController], (serviceMock, http) => {
+      service = serviceMock;
+      httpMock = http;
+    }));
 
 
   it('should be created', () => {
@@ -39,14 +38,14 @@ describe('UserService', () => {
     const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/users`));
     mockReq.flush({});
     expect(spy).toHaveBeenCalledWith({});
-});
+  });
 
-it('should fetch Links',() => {
-  const spy = jest.fn();
-  service.getUsers().subscribe(spy);
-  const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/users`));
-  mockReq.flush({});
-  expect(spy).toHaveBeenCalledWith({});
-});
+  it('should fetch Links', () => {
+    const spy = jest.fn();
+    service.getUsers().subscribe(spy);
+    const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/users`));
+    mockReq.flush({});
+    expect(spy).toHaveBeenCalledWith({});
+  });
 
 });

@@ -1,10 +1,29 @@
 
 <div class="card">
-    <div class="container" [ngStyle]="{ 'background-color': classes }">
-      <h4><b>{{book.title}}</b></h4>
-      <h5>{{book.category}}</h5> 
-    </div>
+  <div class="container" [ngStyle]="{ 'background-color': classes }">
+    <span *ngIf="book.category === 'Cookbooks'"> <img src="../../../assets/cookbook.svg"/></span>
+    <span *ngIf="book.category === 'English'"><img src="../../../assets/english.svg"/></span>
+    <span *ngIf="book.category === 'Horror'"><img src="../../../assets/horror.svg"/></span>
+    <span *ngIf="book.category === 'Historical Fiction'"> <img src="../../../assets/history.svg"/></span>
+    <span *ngIf="book.category === 'Science'"> <img src="../../../assets/universe.svg"/></span>
+    <span *ngIf="book.category !== 'Cookbooks' && 
+    book.category !== 'English' && 
+    book.category !== 'Science' &&
+    book.category !== 'Historical Fiction' &&
+    book.category !== 'Horror'"> <img src="../../../assets/other.svg"/></span>
+      <div class="content">
+        <h4><b>{{book.title}}</b></h4>
+        <h5>{{book.category}}</h5>
+      </div>
+  </div>
 </div>
 
 
 
+
+
+
+ 
+ 
+ 
+  

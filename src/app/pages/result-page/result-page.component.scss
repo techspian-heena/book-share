@@ -1,0 +1,98 @@
+:host {
+  display: block;
+ // padding: 12px;
+  border-radius: 2px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.page-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .buttons {
+        button {
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer; 
+        border-radius: 7px;
+        padding: 10px;
+        }
+
+        .add-new {
+            border: none;
+            background-color: tomato;          
+            color: white;            
+       }
+
+    .back {
+        background-color: #ffff;
+        border: 1px solid tomato;
+        color: tomato;
+    }
+    }
+}
+
+.container {
+table {
+   // border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 16px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #d1d1d1;
+  }
+
+  .action {
+    border: none;
+    border-radius: 25px;
+    background-color: antiquewhite;
+  }
+
+  
+}
+
+@media screen and (min-width: 280px) and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr { border: 1px solid #ccc; }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 200px;
+    margin-left: 150px;
+  }
+  td:before {
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    width: 200px;
+    padding-right: 40px;
+    white-space: nowrap;
+    margin-left: -150px;
+  }
+  td:nth-of-type(1):before { content: "Id"; }
+  td:nth-of-type(2):before { content: "Name"; }
+  td:nth-of-type(3):before { content: "Category"; }
+  td:nth-of-type(4):before { content: "Description";}
+  td:nth-of-type(5):before { content: "Edit";}
+  td:nth-of-type(6):before { content: "Delete";}
+}

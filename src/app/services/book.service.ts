@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Book } from '../interfaces/book'
+import { Book } from '../interfaces/book';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -64,15 +64,15 @@ export class BookService {
             return null;
           }
         })
-      )
+      );
   }
 
-  deleteBook(id) {
+  deleteBook(id): Observable<boolean>{
     return this.http.delete(`${this.endPoint}/books/${id}`, this.httpOptions)
       .pipe(
         map((res: any) => {
           if (res != null) {
-            return true
+            return true;
           } else {
             return false;
           }

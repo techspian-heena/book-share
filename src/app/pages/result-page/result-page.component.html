@@ -1,0 +1,31 @@
+<div class="page-header">
+<h3>Book Details</h3>
+<div class="buttons">
+<button class="add-new" (click)="addNew()">Add New</button>
+<button class="back btn btn-secondary btn-sm float-sm-right mr-2" (click)="logOut()">
+ LogOut </button>
+</div>
+</div>
+<div class="container">
+ <table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Description</th>
+  </tr>
+  <tr *ngFor="let list of ( books$ | async )">
+    <td><div (click)="edit(list)">{{list.id}}</div></td>
+    <td>{{list.title}}</td>
+    <td>{{list.category}}</td>
+    <td>{{list.description}}</td>
+    <td *ngIf="enableEditDelete">
+       <button class="action" (click)="edit(list)"><img src="../../../assets/register.svg"/></button>
+    </td>
+    <td *ngIf="enableEditDelete">
+       <button class="action" (click)="delete(list)"><img src="../../../assets/trash.svg"/></button>
+    </td>
+  </tr>
+ </table>
+</div>
+

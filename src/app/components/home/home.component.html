@@ -1,13 +1,9 @@
 <div class="container">
-
-  <button class="login" (click)="logIn()">Login</button>
-  <button class="sign-up" (click)="signUp()">SignUp</button>
-
-  <section>
-    <div *ngFor="let item of ( books$ | async )">
+  <div class="parent-container">
+    <div class="child-container" *ngFor="let item of ( books$ | async )">
             <div class="card-container">
               <app-card [book]="item"></app-card>
             </div>
     </div>
-</section>
+  </div>
 </div>

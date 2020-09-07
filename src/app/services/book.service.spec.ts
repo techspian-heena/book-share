@@ -5,29 +5,28 @@ import {
 } from '@angular/common/http/testing';
 import { BookService } from './book.service';
 import { environment } from 'src/environments/environment';
-import { Book } from '../interfaces/book';
 
 const mockBooks = [
   {
     id: 1,
-    title: "Percy Jackson",
-    category: "English",
-    description: "About to save camp half rode"
+    title: 'Percy Jackson',
+    category: 'English',
+    description: 'About to save camp half rode'
   },
   {
     id: 2,
-    title: "Mastering the Art of French Cooking",
-    category: "Cookbooks",
-    description: "It is for both seasoned cooks and beginners"
+    title: 'Mastering the Art of French Cooking',
+    category: 'Cookbooks',
+    description: 'It is for both seasoned cooks and beginners'
   }
 ];
 
 const mockBook = {
   id: 3,
-  title: "The Testaments",
-  category: "Science",
-  description: " The Sequel to The Handmaid's Tale"
-}
+  title: 'The Testaments',
+  category: 'Science',
+  description: 'The Sequel to The Handmaid Tale'
+};
 
 describe('BookService', () => {
   let service: BookService;
@@ -35,7 +34,7 @@ describe('BookService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
+      imports: [HttpClientTestingModule],
       providers: [
         BookService
       ]
@@ -43,10 +42,10 @@ describe('BookService', () => {
   });
 
   beforeEach(
-    inject([BookService, HttpTestingController], (_service, _httpMock) => {
-      service = _service;
-      httpMock = _httpMock;
-  }));
+    inject([BookService, HttpTestingController], (serviceMock, http) => {
+      service = serviceMock;
+      httpMock = http;
+    }));
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -59,41 +58,42 @@ describe('BookService', () => {
     });
 
     const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books`));
-    expect(mockReq.request.method).toEqual('GET')
+    expect(mockReq.request.method).toEqual('GET');
     mockReq.flush(mockBooks);
     httpMock.verify();
   });
 
   it('addBook: should Add book', () => {
-    const requestBody = { title: "The Testaments"};
+    const requestBody = { title: 'The Testaments' };
     service.addBook(requestBody).subscribe((book) => {
-     expect(book[0].category).toEqual('Science')
+      expect(book[0].category).toEqual('Science');
     });
     const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books`));
-    expect(mockReq.request.method).toEqual('POST')
+    expect(mockReq.request.method).toEqual('POST');
     mockReq.flush(mockBook);
     httpMock.verify();
-});
+  });
 
-it('updateBook: should update books', () => {
-  const spy = jest.fn();
-  const requestBody = {};
-  const id = 1;
-  service.updateBook(requestBody).subscribe(spy);
-  const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books/${id}`));
-  expect(mockReq.request.method).toEqual('PUT')
-  mockReq.flush({});
-  expect(spy).toHaveBeenCalledWith({});
-});
+  it('updateBook: should update books', () => {
+    const spy = jest.fn();
+    const requestBody = { id: 3, title: 'he Testaments' };
+    service.updateBook(requestBody).subscribe((book) => {
+      expect(book.category).toEqual('Science');
+    });
+    const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books/${requestBody.id}`));
+    expect(mockReq.request.method).toEqual('PUT');
+    mockReq.flush(mockBook);
+    httpMock.verify();
+  });
 
-it('deleteBook: should delete books', () => {
-  const spy = jest.fn();
-  service.deleteBook(1).subscribe(spy);
-  const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books/${1}`));
-  mockReq.flush({});
-  expect(spy).toHaveBeenCalledWith({});
-});
+  it('deleteBook: should delete books', () => {
+    const spy = jest.fn();
+    service.deleteBook(3).subscribe(spy);
+    const mockReq = httpMock.expectOne(req => req.url.includes(`${environment.apiEndpoint}/books/${3}`));
+    mockReq.flush({});
+    expect(spy).toHaveBeenCalledWith(true);
+  });
 
 
-  
+
 });

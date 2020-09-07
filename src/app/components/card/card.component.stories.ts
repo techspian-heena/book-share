@@ -1,4 +1,4 @@
-import { CardComponent } from "./card.component";
+import { CardComponent } from './card.component';
 import { storiesOf } from '@storybook/angular';
 
 storiesOf('Card', module)

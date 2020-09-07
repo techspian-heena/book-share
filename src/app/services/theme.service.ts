@@ -19,15 +19,15 @@ export class ThemeService {
 
   constructor() { }
 
-  toggleDark() {
+  toggleDark(): void {
     this.setTheme(darkTheme);
   }
 
-  toggleLight() {
+  toggleLight(): void {
     this.setTheme(lightTheme);
   }
 
-  private setTheme(theme: {}) {
+  private setTheme(theme: {}): void {
     Object.keys(theme).forEach(k =>
       document.documentElement.style.setProperty(`--${k}`, theme[k])
     );

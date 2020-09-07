@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "json:server": "json-server --watch json-server/db.json",
     "docs:json": "compodoc -p ./tsconfig.base.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook"
@@ -30,6 +32,7 @@
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-storysource": "^6.0.21",
     "json-server": "^0.16.1",
+    "ngx-translate-testing": "^5.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

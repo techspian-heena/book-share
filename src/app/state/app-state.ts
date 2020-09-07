@@ -1,5 +1,5 @@
-import { BookState } from '../components/state/book.reducer';
+import { BookState } from '../store/book.reducer';
 
 export interface AppState {
-    data: BookState
+    data: BookState;
 }

@@ -1,0 +1,19 @@
+<div class="header">
+    <h2>   <img src="../../../assets/book.svg"/> Book Share</h2>
+    <div class="header-right">
+        <div class="dropdown">
+            <button (click)="isToggle = !isToggle;"><img src="../../../../assets/arrow.svg"/></button>
+            <div [ngClass]="{'open': isToggle}" class="dropdown-content">
+                <input type="radio" checked id="light" value="light" name="theme" (change)="changeValue($event.target.value)">
+                <label for="light">Light</label><br>
+                <input type="radio" id="dark" value="dark" name="theme" (change)="changeValue($event.target.value)">
+                <label for="dark">Dark</label>
+            </div>
+        </div>
+         <div class="entry-btn">
+            <button class="login" (click)="logIn()">Login</button>
+            <button class="sign-up" (click)="signUp()">Register</button>
+        </div>
+
+    </div>
+</div>

@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideMockStore } from '@ngrx/store/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +13,23 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserModule,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        provideMockStore({
+          initialState: {
+            data: {
+
+            }
+          },
+        })
+
+      ]
     })
     .compileComponents();
   }));
@@ -16,15 +37,11 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  describe('Test: HomeComponent', () => {
-		it ('should be initialized', () => {
-		//	expect(fixture).toBeTruthy();
-	//		fixture.detectChanges();
-			const compiled = fixture.debugElement.nativeElement;
-			const button = compiled.querySelector('button');
-			expect(button.textContent).toContain('Login');
-		});
-	});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
 });
